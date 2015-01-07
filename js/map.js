@@ -1,4 +1,4 @@
-			var urlWhole = "http://localhost/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Acb_2013_us_state_5m_diplomacy-impacts&outputformat=json";
+			var urlWhole = "http://54.197.226.119:8080/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Acb_2013_us_state_5m_diplomacy-impacts&outputformat=json";
 			
 			var allLayersGroup = new L.LayerGroup();
 			
