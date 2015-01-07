@@ -1,0 +1,23 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    U.S. Department of State, Office of eDiplomacy's GIS Team
+	@bryant-edip
+	@brodydittemore
+	@nathanhilbert
+	
+# CLIENT
+	Developed for MPRI
+
+# THANKS
+
+    Office of eDiplomacy
+		http://www.state.gov/m/irm/ediplomacy/
+		@eDipatstate
+		@eDiplomacy
+
+# TECHNOLOGY COLOPHON
+
+    HTML, CSS3, OpenGeo, LeafletJS, jQuery, Bootstrap
