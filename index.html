@@ -43,8 +43,8 @@
                         <a id="dataDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Education Visa</a>
                         <ul class="dropdown-menu" style="padding:10px;">
                             <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducation),map.addLayer(allLayersGroup),legendEducation.addTo(map),sidebarEducation.toggle();">&nbsp;&nbsp;Economic Impact</a></li>
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducation),map.addLayer(allLayersGroup),legendEducation.addTo(map),sidebarEducation.toggle();">&nbsp;&nbsp;International Students</a></li>
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducation),map.addLayer(allLayersGroup),legendEducation.addTo(map),sidebarEducation.toggle();">&nbsp;&nbsp;Jobs Created</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerIntlStudents),map.addLayer(allLayersGroup),legendIntlStudents.addTo(map),sidebarIntlStudents.toggle();">&nbsp;&nbsp;International Students</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducationJobs),map.addLayer(allLayersGroup),legendEducationJobs.addTo(map),sidebarEducationJobs.toggle();">&nbsp;&nbsp;Jobs Created</a></li>
                          </ul>
                     </li>
                     <li>
@@ -57,7 +57,8 @@
                     <li>
                         <a id="dataDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Foreign Direct Investment</a>
                         <ul class="dropdown-menu" style="padding:10px;">
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerContracts),map.addLayer(allLayersGroup),legendContracts.addTo(map),sidebarContracts.toggle();">&nbsp;&nbsp;Foreign Direct Investment</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIInvest),map.addLayer(allLayersGroup),legendFDIInvest.addTo(map),sidebarFDIInvest.toggle();">&nbsp;&nbsp;Funds Invested</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIJobs),map.addLayer(allLayersGroup),legendFDIJobs.addTo(map),sidebarFDIJobs.toggle();">&nbsp;&nbsp;Jobs Created</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -65,8 +66,12 @@
         </div>
         <div id="map"></div>
         <div id="sidebarEducation"></div>
+        <div id="sidebarIntlStudents"></div>
+        <div id="sidebarEducationJobs"></div>
         <div id="sidebarContracts"></div>
         <div id="sidebarGrants"></div>
+        <div id="sidebarFDIInvest"></div>
+        <div id="sidebarFDIJobs"></div>
 		<div id="loading" style="display:block;">
             <div class="loading-indicator">
                 <div class="progress progress-striped active">
