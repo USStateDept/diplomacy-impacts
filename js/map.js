@@ -1,8 +1,8 @@
 			//var urlWhole = "http://54.197.226.119:8080/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Acb_2013_us_state_5m_diplomacy-impacts&outputformat=json";
 			var urlWhole = "http://localhost/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Acb_2013_us_state_5m_diplomacy-impacts&outputformat=json";
 			//var urlFDIdata = "http://54.197.226.119:8080/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ADATATABLE&outputformat=json";
-			var urlFDIDomestic = "http://localhost/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Atbl_BidPositions&outputformat=json";
-			var urlFDIForeign = "http://localhost/geoserver/world/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=world%3Acities&outputformat=json";
+			var urlFDIDomestic = "http://localhost/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Atbl_FDIDomestic&outputformat=json";
+			var urlFDIForeign = "http://localhost/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Atbl_FDIForeign&outputformat=json";
 			
 			var allLayersGroup = new L.LayerGroup();
 			
@@ -250,8 +250,7 @@
 			function getFDIDomesticGeoJson(data) {
 				var geoJsonLayerFDIDomestic = new L.geoJson(data, {
 					onEachFeature: function (feature, layer) {
-						layer.bindPopup("test - domestic");
-						//layer.bindPopup("<h4><a href='#leadDetails' data-toggle='modal' data-target='#leadModal'>" + feature.properties.Project_Title + "</a><br><small>" + feature.properties.Sector + ", US$" + $.number(feature.properties.Project_Size) + "<br></small></h4><h5><small>Status: </small>" + feature.properties.Status + "<br><small>Date Added: </small>" + $.format.date("feature.properties.Project_Announced", 'dd/MM/yyyy') + "<small><br>Primary Funding Source: </small>" + feature.properties.Project_Funding_Source + "<br><div class='btn-group' style='margin:10px;'><button type='button' class='btn btn-link btn-xs'><a href='" + feature.properties.Link_To_Project + "' target='_blank' onclick='javascript:ga('send', 'event', 'External_Link', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Lead Website</a></button><button type='button' class='btn btn-link btn-xs'><a href='" + feature.properties.Business_URL + "' target='_blank' onclick='javascript:ga('send', 'event', 'Business_Tab_Link', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Embassy Website</a></button><button type='button' class='btn btn-link btn-xs'><a href='mailto:" + feature.properties.Submitting_Officer_Contact + "?Subject=BIDS: " + feature.properties.Project_Title + "' target='_blank' onclick='javascript:ga('send', 'event', 'Contact', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Contact Embassy</a></button></div></div></div></h5>");
+						layer.bindPopup("<h4>" + feature.properties.AffName + "</h4><h5>Parent Company: " + feature.properties.ForName + "</h5><h5>FDI Invested: US$" + $.number(feature.properties.fdi_invest) + "</h5><h5>Jobs Created by FDI: " + $.number(feature.properties.fdi_jobs) + "</h5>");
 					}
 				});
 			
@@ -263,8 +262,7 @@
 			function getFDIForeignGeoJson(data) {
 				var geoJsonLayerFDIForeign = new L.geoJson(data, {
 					onEachFeature: function (feature, layer) {
-						layer.bindPopup("test - foreign");
-						//layer.bindPopup("<h4><a href='#leadDetails' data-toggle='modal' data-target='#leadModal'>" + feature.properties.Project_Title + "</a><br><small>" + feature.properties.Sector + ", US$" + $.number(feature.properties.Project_Size) + "<br></small></h4><h5><small>Status: </small>" + feature.properties.Status + "<br><small>Date Added: </small>" + $.format.date("feature.properties.Project_Announced", 'dd/MM/yyyy') + "<small><br>Primary Funding Source: </small>" + feature.properties.Project_Funding_Source + "<br><div class='btn-group' style='margin:10px;'><button type='button' class='btn btn-link btn-xs'><a href='" + feature.properties.Link_To_Project + "' target='_blank' onclick='javascript:ga('send', 'event', 'External_Link', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Lead Website</a></button><button type='button' class='btn btn-link btn-xs'><a href='" + feature.properties.Business_URL + "' target='_blank' onclick='javascript:ga('send', 'event', 'Business_Tab_Link', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Embassy Website</a></button><button type='button' class='btn btn-link btn-xs'><a href='mailto:" + feature.properties.Submitting_Officer_Contact + "?Subject=BIDS: " + feature.properties.Project_Title + "' target='_blank' onclick='javascript:ga('send', 'event', 'Contact', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Contact Embassy</a></button></div></div></div></h5>");
+						layer.bindPopup("<h4>Foreign Firm: " + feature.properties.ForNam + " name</h4><h5>FDI Invested: US$" + $.number(feature.properties.SumOffdi_i) + "</h5><h5>Jobs Created by FDI: " + $.number(feature.properties.SumOffdi_j) + "</h5>");
 					}
 				});
 			
