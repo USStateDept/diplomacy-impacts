@@ -1,7 +1,27 @@
-html, body, #map {
+html, body, span{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+* {
+ 	font-family: "DroidSansRegular", Arial, Helvetica, sans-serif !important;
+}
+
+  #mapPane{
+    height:100%;
+  }
+  /*
+  body {
+    padding-top: 38px;
+  }
+  */
+
+#mainContainer, #map {
   height: 100%;
-  width: 100%;
+  width:100%;
   overflow: hidden;
+  padding-right:0px;
+  padding-left:0px;
 }
 body {
   padding-top: 50px;
