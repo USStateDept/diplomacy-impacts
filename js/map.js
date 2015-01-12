@@ -1,4 +1,8 @@
-			var urlWhole = "http://54.197.226.119:8080/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Acb_2013_us_state_5m_diplomacy-impacts&outputformat=json";
+			//var urlWhole = "http://54.197.226.119:8080/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Acb_2013_us_state_5m_diplomacy-impacts&outputformat=json";
+			var urlWhole = "http://localhost/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Acb_2013_us_state_5m_diplomacy-impacts&outputformat=json";
+			//var urlFDIdata = "http://54.197.226.119:8080/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ADATATABLE&outputformat=json";
+			var urlFDIDomestic = "http://localhost/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Atbl_BidPositions&outputformat=json";
+			var urlFDIForeign = "http://localhost/geoserver/world/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=world%3Acities&outputformat=json";
 			
 			var allLayersGroup = new L.LayerGroup();
 			
@@ -222,13 +226,16 @@
 				center: [35, -95],
 				maxZoom: 8,
 				minZoom: 1,
-				zoom: 4,
+				zoom: 4
+				/*
+				,
 				maxBounds: [
 					//south west
 					[15, -180],
 					//north east
 					[73, -65]
 				]
+				*/
 			});
 			
 			L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
@@ -237,6 +244,49 @@
 				id: 'examples.map-20v6611k'
 			}).addTo(map);
 
+			var geoJsonLayerFDIDomestic;
+			var geoJsonLayerFDIForeign;
+			
+			function getFDIDomesticGeoJson(data) {
+				var geoJsonLayerFDIDomestic = new L.geoJson(data, {
+					onEachFeature: function (feature, layer) {
+						layer.bindPopup("test - domestic");
+						//layer.bindPopup("<h4><a href='#leadDetails' data-toggle='modal' data-target='#leadModal'>" + feature.properties.Project_Title + "</a><br><small>" + feature.properties.Sector + ", US$" + $.number(feature.properties.Project_Size) + "<br></small></h4><h5><small>Status: </small>" + feature.properties.Status + "<br><small>Date Added: </small>" + $.format.date("feature.properties.Project_Announced", 'dd/MM/yyyy') + "<small><br>Primary Funding Source: </small>" + feature.properties.Project_Funding_Source + "<br><div class='btn-group' style='margin:10px;'><button type='button' class='btn btn-link btn-xs'><a href='" + feature.properties.Link_To_Project + "' target='_blank' onclick='javascript:ga('send', 'event', 'External_Link', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Lead Website</a></button><button type='button' class='btn btn-link btn-xs'><a href='" + feature.properties.Business_URL + "' target='_blank' onclick='javascript:ga('send', 'event', 'Business_Tab_Link', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Embassy Website</a></button><button type='button' class='btn btn-link btn-xs'><a href='mailto:" + feature.properties.Submitting_Officer_Contact + "?Subject=BIDS: " + feature.properties.Project_Title + "' target='_blank' onclick='javascript:ga('send', 'event', 'Contact', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Contact Embassy</a></button></div></div></div></h5>");
+					}
+				});
+			
+				markersDomestic = L.markerClusterGroup({showCoverageOnHover: false, maxClusterRadius: 30});
+				markersDomestic.addLayer(geoJsonLayerFDIDomestic);
+				//map.addLayer(markersDomestic);
+			}
+
+			function getFDIForeignGeoJson(data) {
+				var geoJsonLayerFDIForeign = new L.geoJson(data, {
+					onEachFeature: function (feature, layer) {
+						layer.bindPopup("test - foreign");
+						//layer.bindPopup("<h4><a href='#leadDetails' data-toggle='modal' data-target='#leadModal'>" + feature.properties.Project_Title + "</a><br><small>" + feature.properties.Sector + ", US$" + $.number(feature.properties.Project_Size) + "<br></small></h4><h5><small>Status: </small>" + feature.properties.Status + "<br><small>Date Added: </small>" + $.format.date("feature.properties.Project_Announced", 'dd/MM/yyyy') + "<small><br>Primary Funding Source: </small>" + feature.properties.Project_Funding_Source + "<br><div class='btn-group' style='margin:10px;'><button type='button' class='btn btn-link btn-xs'><a href='" + feature.properties.Link_To_Project + "' target='_blank' onclick='javascript:ga('send', 'event', 'External_Link', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Lead Website</a></button><button type='button' class='btn btn-link btn-xs'><a href='" + feature.properties.Business_URL + "' target='_blank' onclick='javascript:ga('send', 'event', 'Business_Tab_Link', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Embassy Website</a></button><button type='button' class='btn btn-link btn-xs'><a href='mailto:" + feature.properties.Submitting_Officer_Contact + "?Subject=BIDS: " + feature.properties.Project_Title + "' target='_blank' onclick='javascript:ga('send', 'event', 'Contact', '" + feature.properties.Project_Title + "_Lead_Details', {'nonInteraction': 1});'>Contact Embassy</a></button></div></div></div></h5>");
+					}
+				});
+			
+				markersForeign = L.markerClusterGroup({showCoverageOnHover: false, maxClusterRadius: 30});
+				markersForeign.addLayer(geoJsonLayerFDIForeign);
+				//map.addLayer(markersForeign);
+			}
+
+			$.ajax({
+				url: urlFDIDomestic,
+				dataType: 'json',
+				jsonpCallback: getFDIDomesticGeoJson,
+				success: getFDIDomesticGeoJson
+			});
+		
+			$.ajax({
+				url: urlFDIForeign,
+				dataType: 'json',
+				jsonpCallback: getFDIForeignGeoJson,
+				success: getFDIForeignGeoJson
+			});
+			
 			var sidebarEducation = L.control.sidebar("sidebarEducation", {
 				closeButton: true,
 				position: "left",

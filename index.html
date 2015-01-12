@@ -15,9 +15,20 @@
 		<link href="lib/bootstrap-3.1.1/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="lib/Leaflet-0.7.2/dist/leaflet.css" />
 		<link rel="stylesheet" href="lib/leaflet-sidebar/src/L.Control.Sidebar.css">
+		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.css" />
+		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<!-- Custom styles for this template -->
         <style>
+			.marker-cluster-small {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
+			.marker-cluster-medium {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
+			.marker-cluster-large {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
         </style>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -59,6 +70,8 @@
                         <ul class="dropdown-menu" style="padding:10px;">
                             <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIInvest),map.addLayer(allLayersGroup),legendFDIInvest.addTo(map),sidebarFDIInvest.toggle();">&nbsp;&nbsp;Funds Invested</a></li>
                             <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIJobs),map.addLayer(allLayersGroup),legendFDIJobs.addTo(map),sidebarFDIJobs.toggle();">&nbsp;&nbsp;Jobs Created</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(markersDomestic),map.addLayer(markersDomestic);">&nbsp;&nbsp;American Affiliates</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(markersForeign),map.addLayer(markersForeign);">&nbsp;&nbsp;Foreign Firms</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -85,6 +98,7 @@
 		<script type="text/javascript" src="js/host.js"></script>
 		<script type="text/javascript" src="lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
         <script src="lib/leaflet-sidebar/src/L.Control.Sidebar.js"></script>
+		<script src="../lib/Leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
 		<script type="text/javascript" src="js/map.js"></script>
         <script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
