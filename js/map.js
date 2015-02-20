@@ -474,7 +474,7 @@
 			function getFDIForeignGeoJson(data) {
 				var geoJsonLayerFDIForeign = new L.geoJson(data, {
 					onEachFeature: function (feature, layer) {
-						layer.bindPopup("<h4>Foreign Firm: " + feature.properties.ForName + " </h4><h5>FDI Invested: US$" + $.number(feature.properties.SumOffdi_i) + "</h5><h5>Jobs Created by FDI: " + $.number(feature.properties.SumOffdi_j) + "</h5>");
+						layer.bindPopup("<h4>" + feature.properties.ForName + " </h4><h5>FDI Invested: US$" + $.number(feature.properties.SumOffdi_i) + "</h5><h5>Jobs Created by FDI: " + $.number(feature.properties.SumOffdi_j) + "</h5>");
 					}
 				});
 			
