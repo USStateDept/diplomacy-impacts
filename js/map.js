@@ -248,13 +248,13 @@
 			}
 			
 			function getColorFDIInvestState(d) {
-				if (d > 1700000000) {
+				if (d > 170000000) {
 					return	'#51493f'
-				} else if (d > 1000000000) {
+				} else if (d > 100000000) {
 					return	'#6d6252'
-				} else if (d > 700000000) {
+				} else if (d > 70000000) {
 					return	'#8d7f68'
-				} else if (d > 200000000) {
+				} else if (d > 20000000) {
 					return	'#b2a483'
 				} else if (d > 0) {
 					return	'#e0d2a4'
@@ -264,13 +264,13 @@
 			}
 			
 			function getColorFDIJobsState(d) {
-				if (d > 30000) {
+				if (d > 3000) {
 					return	'#51493f'
-				} else if (d > 15000) {
+				} else if (d > 1500) {
 					return	'#6d6252'
-				} else if (d > 7000) {
+				} else if (d > 700) {
 					return	'#8d7f68'
-				} else if (d > 3500) {
+				} else if (d > 350) {
 					return	'#b2a483'
 				} else if (d > 0) {
 					return	'#e0d2a4'
@@ -952,13 +952,13 @@
 				currentSidebar = sidebarFDIInvestState;
 				sidebarFDIInvestState.addTo(map);
 				var div = L.DomUtil.create('div'),
-					grades = ['1700000001', '1000000001', '700000001', '200000001', '1','0'],
+					grades = ['170000001', '100000001', '70000001', '20000001', '1','0'],
 					// this is something like a subheader
 					labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Greater than 1,700', '1,000 to 1,700', '700 to 1,000', '200 to 700', '1 to 200', '0'];
+					from = ['Greater than 170', '100 to 170', '70 to 100', '20 to 70', '1 to 20', '0'];
 					
 					labels.push(
 						'<i style="background:' + getColorFDIInvestState(grades[i]) + '"></i>' +
@@ -980,13 +980,13 @@
 				currentSidebar = sidebarFDIJobsState;
 				sidebarFDIJobsState.addTo(map);
 				var div = L.DomUtil.create('div'),
-					grades = ['30001', '15001', '7001', '3501', '1','0'],
+					grades = ['3001', '1501', '701', '351', '1','0'],
 					// this is something like a subheader
 					labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Greater than 30,000', '15,000 to 30,000', '7,000 to 15,000', '3,500 to 7,000', '1 to 3,500', '0'];
+					from = ['Greater than 3,000', '1,500 to 3,000', '700 to 1.500', '350 to 700', '1 to 350', '0'];
 					
 					labels.push(
 						'<i style="background:' + getColorFDIJobsState(grades[i]) + '"></i>' +
