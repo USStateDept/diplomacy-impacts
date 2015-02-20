@@ -84,23 +84,28 @@
 					<li class="defaultLayer">
                         <a id="dataDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Education Visa</a>
                         <ul class="dropdown-menu" style="padding:10px;">
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducation),map.addLayer(allLayersGroup),legendEducation.addTo(map),sidebarEducation.toggle();">&nbsp;&nbsp;Economic Impact</a></li>
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerIntlStudents),map.addLayer(allLayersGroup),legendIntlStudents.addTo(map),sidebarIntlStudents.toggle();">&nbsp;&nbsp;International Students</a></li>
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducationJobs),map.addLayer(allLayersGroup),legendEducationJobs.addTo(map),sidebarEducationJobs.toggle();">&nbsp;&nbsp;Jobs Created</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducationCD),map.addLayer(allLayersGroup),legendEducationCD.addTo(map),sidebarEducationCD.toggle();">&nbsp;&nbsp;Economic Impact - Congressional Districts</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducationState),map.addLayer(allLayersGroup),legendEducationState.addTo(map),sidebarEducationState.toggle();">&nbsp;&nbsp;Economic Impact - States (2013)</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerIntlStudentsCD),map.addLayer(allLayersGroup),legendIntlStudentsCD.addTo(map),sidebarIntlStudentsCD.toggle();">&nbsp;&nbsp;International Students - Congressional Districts</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerIntlStudentsState),map.addLayer(allLayersGroup),legendIntlStudentsState.addTo(map),sidebarIntlStudentsState.toggle();">&nbsp;&nbsp;International Students - States</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducationJobsCD),map.addLayer(allLayersGroup),legendEducationJobsCD.addTo(map),sidebarEducationJobsCD.toggle();">&nbsp;&nbsp;Jobs Created - Congressional Districts</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEducationJobsState),map.addLayer(allLayersGroup),legendEducationJobsState.addTo(map),sidebarEducationJobsState.toggle();">&nbsp;&nbsp;Jobs Created - States</a></li>
                          </ul>
                     </li>
                     <li>
                         <a id="dataDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">DoS Spending</a>
                         <ul class="dropdown-menu" style="padding:10px;">
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerContracts),map.addLayer(allLayersGroup),legendContracts.addTo(map),sidebarContracts.toggle();">&nbsp;&nbsp;Contracts</a></li>
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerGrants),map.addLayer(allLayersGroup),legendGrants.addTo(map),sidebarGrants.toggle();">&nbsp;&nbsp;Grants</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerContractsState),map.addLayer(allLayersGroup),legendContractsState.addTo(map),sidebarContractsState.toggle();">&nbsp;&nbsp;Contracts - States</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerGrantsState),map.addLayer(allLayersGroup),legendGrantsState.addTo(map),sidebarGrantsState.toggle();">&nbsp;&nbsp;Grants - States</a></li>
                         </ul>
                     </li>
                     <li>
                         <a id="dataDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Foreign Direct Investment</a>
                         <ul class="dropdown-menu" style="padding:10px;">
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIInvest),map.addLayer(allLayersGroup),legendFDIInvest.addTo(map),sidebarFDIInvest.toggle();">&nbsp;&nbsp;Funds Invested</a></li>
-                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIJobs),map.addLayer(allLayersGroup),legendFDIJobs.addTo(map),sidebarFDIJobs.toggle();">&nbsp;&nbsp;Jobs Created</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIInvestCD),map.addLayer(allLayersGroup),legendFDIInvestCD.addTo(map),sidebarFDIInvestCD.toggle();">&nbsp;&nbsp;Funds Invested - Congressional Districts</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIInvestState),map.addLayer(allLayersGroup),legendFDIInvestState.addTo(map),sidebarFDIInvestState.toggle();">&nbsp;&nbsp;Funds Invested - States</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIJobsCD),map.addLayer(allLayersGroup),legendFDIJobsCD.addTo(map),sidebarFDIJobsCD.toggle();">&nbsp;&nbsp;Jobs Created - Congressional Districts</a></li>
+                            <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFDIJobsState),map.addLayer(allLayersGroup),legendFDIJobsState.addTo(map),sidebarFDIJobsState.toggle();">&nbsp;&nbsp;Jobs Created - States</a></li>
                             <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(markersDomestic),map.addLayer(markersDomestic);">&nbsp;&nbsp;American Affiliates</a></li>
                             <li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(markersForeign),map.addLayer(markersForeign);">&nbsp;&nbsp;Foreign Firms</a></li>
                         </ul>
@@ -109,13 +114,22 @@
             </div><!--/.navbar-collapse -->
         </div>
         <div id="map"></div>
-        <div id="sidebarEducation"></div>
-        <div id="sidebarIntlStudents"></div>
-        <div id="sidebarEducationJobs"></div>
-        <div id="sidebarContracts"></div>
-        <div id="sidebarGrants"></div>
-        <div id="sidebarFDIInvest"></div>
-        <div id="sidebarFDIJobs"></div>
+        <div id="sidebarEducationCD"></div>
+        <div id="sidebarIntlStudentsCD"></div>
+        <div id="sidebarEducationJobsCD"></div>
+        <!--
+		<div id="sidebarContractsCD"></div>
+        <div id="sidebarGrantsCD"></div>
+        -->
+		<div id="sidebarFDIInvestCD"></div>
+        <div id="sidebarFDIJobsCD"></div>
+		<div id="sidebarEducationState"></div>
+        <div id="sidebarIntlStudentsState"></div>
+        <div id="sidebarEducationJobsState"></div>
+        <div id="sidebarContractsState"></div>
+        <div id="sidebarGrantsState"></div>
+        <div id="sidebarFDIInvestState"></div>
+        <div id="sidebarFDIJobsState"></div>
 		<div id="loading" style="display:block;">
             <div class="loading-indicator">
                 <div class="progress progress-striped active">
